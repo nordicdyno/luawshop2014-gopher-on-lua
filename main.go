@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"go/build"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -24,8 +25,13 @@ var (
 )
 
 func getWorkDir() string {
-	filename, _ := osext.Executable()
-	return filepath.Join(filepath.Dir(filename), "resources")
+	p, err := build.Default.Import("bitbucket.org/tribuna/ios-sender", "", build.FindOnly)
+	if err != nil {
+		filename, _ := osext.Executable()
+		return filepath.Join(filepath.Dir(filename), "resources")
+	}
+
+	return p.Dir
 }
 
 func init() {
