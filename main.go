@@ -31,7 +31,7 @@ func getWorkDir() string {
 		return filepath.Join(filepath.Dir(filename), "resources")
 	}
 
-	return p.Dir
+	return filepath.Join(p.Dir, "resources")
 }
 
 func init() {
