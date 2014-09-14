@@ -25,7 +25,7 @@ var (
 )
 
 func getWorkDir() string {
-	p, err := build.Default.Import("bitbucket.org/tribuna/ios-sender", "", build.FindOnly)
+	p, err := build.Default.Import("github.com/nordicdyno/luawshop2014-gopher-on-lua", "", build.FindOnly)
 	if err != nil {
 		filename, _ := osext.Executable()
 		return filepath.Join(filepath.Dir(filename), "resources")
